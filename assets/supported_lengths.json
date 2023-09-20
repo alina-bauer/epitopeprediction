@@ -1,0 +1,22 @@
+{
+    "syfpeithi": {
+        "min": 8,
+        "max": 12
+    },
+    "mhcflurry": {
+        "min": 8,
+        "max": 15
+    },
+    "mhcnuggets": {
+        "min": 1,
+        "max": 15
+    },
+    "netmhcpan": {
+        "min": 8,
+        "max": 56
+    },
+    "netmhciipan": {
+        "min": 8,
+        "max": 56
+    }
+}
