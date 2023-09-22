@@ -20,14 +20,14 @@ process MHCFLURRY {
         error("MHCflurry prediction of ${meta.sample} is not possible with MHC class II!")
     }
 
-    def prefix = "${meta.sample}_${peptide_file.baseName}"
+    """
+    mhcflurry-predict 'mhcflurry_input.csv' \\
+                        --out '${meta.sample}_mhcflurry_output.tsv'
 
-    """
-    """
-
-    stub:
-    """
-    touch ${meta.sample}_predicted_mhcflurry.tsv
-    touch versions.yml
+    cat <<-END_VERSIONS > versions.yml
+    "${task.process}":
+        python \$(python --version | sed 's/Python //g')
+        mhcflurry \$(mhcflurry-predict --version 2>&1 | sed 's/^mhcflurry //; s/ .*\$//')
+    END_VERSIONS
     """
 }

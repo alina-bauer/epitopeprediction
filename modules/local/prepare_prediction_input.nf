@@ -39,7 +39,6 @@ process PREPARE_PREDICTION_INPUT {
     "${task.process}":
         python \$(python --version | sed 's/Python //g')
         netmhcpan \$(echo 4.1)
-        netmhcpan \$(cat data/version | sed -s 's/ version/:/g')
         mhcgnomes \$(python -c "from mhcgnomes import version; print(version.__version__)"   )
     END_VERSIONS
     """

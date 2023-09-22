@@ -385,7 +385,6 @@ workflow EPITOPEPREDICTION {
     ch_predicted_peptides = MHC_BINDING_PREDICTION
                                     .out
                                     .predicted
-
     ch_versions = ch_versions.mix(MHC_BINDING_PREDICTION.out.versions.ifEmpty(null))
 
     // Run epitope prediction for variants
@@ -467,6 +466,7 @@ workflow EPITOPEPREDICTION {
     ch_versions = ch_versions.mix( MERGE_JSON_MULTI.out.versions.ifEmpty(null) )
     */
 
+    /*
     //
     // MODULE: Pipeline reporting
     //
@@ -495,6 +495,7 @@ workflow EPITOPEPREDICTION {
         ch_multiqc_logo.toList()
     )
     multiqc_report = MULTIQC.out.report.toList()
+    */
     }
 }
 

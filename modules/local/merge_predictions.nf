@@ -18,17 +18,16 @@ process MERGE_PREDICTIONS {
     def output = prediction_files.first().baseName.split("_").dropRight(2).join("_")
 
     """
+    merge_binding_predictions.py \
+        --input ${prediction_files} \
+        --input_metadata ${metadata_file} \
+        --output ${output}_merged.tsv \
+
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         python \$(python --version | sed 's/Python //g')
         mhcgnomes \$(python -c "from mhcgnomes import version; print(version.__version__)"   )
     END_VERSIONS
-    """
-
-    stub:
-    """
-    touch merged_prediction.tsv
-    touch versions.yml
     """
 
 }
